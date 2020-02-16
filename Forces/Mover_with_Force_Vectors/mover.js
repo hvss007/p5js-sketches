@@ -1,11 +1,12 @@
 class Mover{
     t=0;
+    mass=random(1,4)
     location;
     velocity;
     acceleration;
-    radius=20;
-    constructor(){
-        this.location=createVector(width/2,height/2)
+    radius=20*this.mass;
+    constructor(x,y){
+        this.location=createVector(x,y)
         this.velocity=createVector(0,0)
         this.acceleration=createVector(0,0)
     }
@@ -15,7 +16,7 @@ class Mover{
       ellipse(this.location.x,this.location.y,this.radius,this.radius)
   }  
    update(){
-       var mouse=createVector(mouseX,mouseY)
+       //var mouse=createVector(mouseX,mouseY)
        //var direction=mouse.sub(location)
        //p5.Vector.mag()
        //this.acceleration=p5.Vector.sub(mouse,this.location).mult(0.001)
@@ -27,7 +28,8 @@ class Mover{
        this.t++
    } 
    applyForce(force){
-    this.acceleration=   p5.Vector.add(force,this.acceleration)
+    var acceleration=force.mult(1/this.mass)   
+    this.acceleration=p5.Vector.add(acceleration,this.acceleration)
     
     }
    checkEdges(){
