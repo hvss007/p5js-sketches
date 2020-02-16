@@ -16,7 +16,8 @@ class Mover{
    update(){
        var mouse=createVector(mouseX,mouseY)
        //var direction=mouse.sub(location)
-       this.acceleration=p5.Vector.sub(mouse,this.location)
+       //p5.Vector.mag()
+       this.acceleration=p5.Vector.sub(mouse,this.location).mult(0.001)
        //this.acceleration=p5.Vector.random2D().mult(noise(this.t))
        this.location.add(this.velocity)
        this.velocity.add(this.acceleration)
