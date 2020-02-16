@@ -1,9 +1,11 @@
 class Mover{
     location;
     velocity;
+    acceleration;
     constructor(){
         this.location=createVector(width/2,height/2)
         this.velocity=createVector(1,3)
+        this.acceleration=createVector(0.02,-0.03)
     }
   display(){
       fill(42,54,62)
@@ -12,6 +14,7 @@ class Mover{
   }  
    update(){
        this.location.add(this.velocity)
+       this.velocity.add(this.acceleration)
    } 
    checkEdges(){
        if(this.location.x>width){
